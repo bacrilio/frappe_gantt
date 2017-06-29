@@ -57,14 +57,7 @@ $handle-color: #ddd;
 		fill: $blue;
 	}
 	.bar-invalid {
-		fill: transparent;
-		stroke: $bar-stroke;
-		stroke-width: 1;
-		stroke-dasharray: 5;
-
-		&~.bar-label {
-			fill: $text-light;
-		}
+		display: none;
 	}
 	.bar-label {
 		fill: #fff;
