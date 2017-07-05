@@ -197,13 +197,13 @@ export default function Gantt(element, tasks, config) {
 			self.gantt_end = self.gantt_end.clone().add(1, 'day');
 		} else if(view_is('Month')) {
 			self.gantt_start = self.gantt_start.clone().subtract(56, 'day');
-			self.gantt_end = self.gantt_end.clone().add(56, 'day');
+			self.gantt_end = self.gantt_end.clone().add(112, 'day');
 		} else if(view_is('Week')) {
 			self.gantt_start = self.gantt_start.clone().subtract(28, 'day');
-			self.gantt_end = self.gantt_end.clone().add(28, 'day');
+			self.gantt_end = self.gantt_end.clone().add(56, 'day');
 		} else {
 			self.gantt_start = self.gantt_start.clone().subtract(14, 'day');
-			self.gantt_end = self.gantt_end.clone().add(14, 'day');
+			self.gantt_end = self.gantt_end.clone().add(28, 'day');
 		}
 	}
 
