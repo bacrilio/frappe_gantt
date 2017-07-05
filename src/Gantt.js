@@ -193,14 +193,17 @@ export default function Gantt(element, tasks, config) {
 	function set_gantt_dates() {
 
 		if(view_is(['Quarter Day', 'Half Day'])) {
-			self.gantt_start = self.gantt_start.clone().subtract(7, 'day');
-			self.gantt_end = self.gantt_end.clone().add(7, 'day');
+			self.gantt_start = self.gantt_start.clone().subtract(1, 'day');
+			self.gantt_end = self.gantt_end.clone().add(1, 'day');
 		} else if(view_is('Month')) {
-			self.gantt_start = self.gantt_start.clone().startOf('year');
-			self.gantt_end = self.gantt_end.clone().endOf('month').add(1, 'year');
+			self.gantt_start = self.gantt_start.clone().subtract(56, 'day');
+			self.gantt_end = self.gantt_end.clone().add(56, 'day');
+		} else if(view_is('Week')) {
+			self.gantt_start = self.gantt_start.clone().subtract(28, 'day');
+			self.gantt_end = self.gantt_end.clone().add(28, 'day');
 		} else {
-			self.gantt_start = self.gantt_start.clone().startOf('month').subtract(1, 'month');
-			self.gantt_end = self.gantt_end.clone().endOf('month').add(1, 'month');
+			self.gantt_start = self.gantt_start.clone().subtract(14, 'day');
+			self.gantt_end = self.gantt_end.clone().add(14, 'day');
 		}
 	}
 
@@ -269,10 +272,11 @@ export default function Gantt(element, tasks, config) {
 	}
 
 	function get_min_date() {
-		const task = self.tasks.reduce((acc, curr) => {
+		/* const task = self.tasks.reduce((acc, curr) => {
 			return curr._start.isSameOrBefore(acc._start) ? curr : acc;
 		});
-		return task._start;
+		return task._start; */
+		return moment();
 	}
 
 	function make_grid() {
